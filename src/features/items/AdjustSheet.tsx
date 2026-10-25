@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { formatINR, roundHalfUp } from '@/core/money';
@@ -26,11 +26,16 @@ export function AdjustSheet({ item, visible, onClose }: { item: Item; visible: b
   const [note, setNote] = useState('');
   const [date, setDate] = useState(todayISO());
 
-  useEffect(() => {
-    if (!visible) return;
-    setReason('count'); setDir('remove'); setNote(''); setDate(todayISO());
-    setQty(String(Math.max(item.stockQty, 0)));
-  }, [visible, item.stockQty]);
+  // Reset the form each time the sheet opens (or the stock changes while open).
+  const openKey = visible ? item.stockQty : null;
+  const [prevOpenKey, setPrevOpenKey] = useState<number | null>(null);
+  if (openKey !== prevOpenKey) {
+    setPrevOpenKey(openKey);
+    if (openKey !== null) {
+      setReason('count'); setDir('remove'); setNote(''); setDate(todayISO());
+      setQty(String(Math.max(item.stockQty, 0)));
+    }
+  }
 
   const dec = allowsDecimal(item.unit);
   const n = Number(qty);

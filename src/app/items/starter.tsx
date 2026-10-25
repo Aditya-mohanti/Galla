@@ -6,7 +6,7 @@ import { starterFor, type StarterItem } from '@/services/starterCatalog';
 import { useApp } from '@/store/app';
 import { findDuplicateItem, useData } from '@/store/data';
 import { toast } from '@/store/toast';
-import { AppHeader, BottomActionBar, Button, colors, Icon, PAD, radius, Screen, SectionLabel, T } from '@/ui';
+import { AppHeader, BottomActionBar, Button, colors, Icon, PAD, Screen, SectionLabel, T } from '@/ui';
 import { unitLabel } from '@/features/items/helpers';
 
 export default function StarterCatalogScreen() {

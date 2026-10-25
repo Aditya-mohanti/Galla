@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { formatDateTime, formatDay } from '@/lib/date';
+import { formatDateTime, formatDay, nowIso } from '@/lib/date';
 import { RESTORE_CHUNKS, RestoreInterrupted, restoreBackup, type BackupSummary } from '@/services/backup';
 import { useApp } from '@/store/app';
 import { useData } from '@/store/data';
-import { nowIso } from '@/lib/date';
 import { uuid } from '@/lib/id';
 import {
   Banner, BottomActionBar, Button, colors, ConfirmSheet, Icon, PAD, ProgressBar, radius, Screen, T,

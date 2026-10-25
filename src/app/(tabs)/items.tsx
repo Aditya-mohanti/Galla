@@ -29,7 +29,9 @@ export default function ItemsScreen() {
   const [search, setSearch] = useState('');
   const [sheet, setSheet] = useState<null | 'sort' | 'category'>(null);
 
-  useEffect(() => { if (params.filter) setFilter(params.filter); }, [params.filter]);
+  // A new ?filter= param (e.g. from a Home card) overrides the current filter.
+  const [paramFilter, setParamFilter] = useState(params.filter);
+  if (params.filter !== paramFilter) { setParamFilter(params.filter); if (params.filter) setFilter(params.filter); }
   // IT-11: debounce 150 ms.
   useEffect(() => { const h = setTimeout(() => setSearch(query.trim()), 150); return () => clearTimeout(h); }, [query]);
 

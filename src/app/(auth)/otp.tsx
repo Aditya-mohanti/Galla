@@ -33,9 +33,7 @@ export default function OtpScreen() {
   const inputRef = useRef<React.ComponentRef<typeof TextInput>>(null);
   const locked = lockedFor > 0;
 
-  useEffect(() => {
-    if (!locked && attempts >= MAX_ATTEMPTS) setAttempts(0); // lock over → fresh tries
-  }, [locked, attempts]);
+  if (!locked && attempts >= MAX_ATTEMPTS) setAttempts(0); // lock over → fresh tries
 
   const verify = async (c: string) => {
     setStatus('checking');
