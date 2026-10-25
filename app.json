@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mera-business",
-    "slug": "mera-business",
+    "name": "Galla",
+    "slug": "galla",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#24356B",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -20,6 +20,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Pick a photo of your item.",
+          "cameraPermission": "Take a photo of your item."
+        }
+      ]
+    ],
+    "scheme": "galla",
+    "backgroundColor": "#F6F4EF"
   }
 }
